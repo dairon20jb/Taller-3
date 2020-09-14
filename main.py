@@ -16,7 +16,7 @@ if __name__ == '__main__':
     image_gray_noisyg= (255 * image_gray_noisyg).astype(np.uint8)
     filtro_ruido_syp = Filtrado(image_gray_noisy)
     filtro_ruido_gauss = Filtrado(image_gray_noisyg)
-    tiempo_filtro_gauss1,ImagenFiltradaGauss1=filtro_ruido_syp.tiempo(filtro_ruido_syp.gaussian_lp)
+    tiempo_filtro_gauss1,ImagenFiltradaGauss1=filtro_ruido_syp.tiempo(filtro_ruido_syp.gaussian_lp) # En las siguientes linesas se mide el tiempo de ejecución de cada filtro
     tiempo_filtro_gauss2, ImagenFiltradaGauss2 = filtro_ruido_gauss.tiempo(filtro_ruido_gauss.gaussian_lp)
     tiempo_filtro_MED1, ImagenFiltradaMED1 = filtro_ruido_syp.tiempo(filtro_ruido_syp.median)
     tiempo_filtro_MED2, ImagenFiltradaMED2 = filtro_ruido_gauss.tiempo(filtro_ruido_gauss.median)
@@ -24,7 +24,7 @@ if __name__ == '__main__':
     tiempo_filtro_BILA2, ImagenFiltradaBILA2 = filtro_ruido_gauss.tiempo(filtro_ruido_gauss.bilateral)
     tiempo_filtro_NLM1, ImagenFiltradaNLM1 = filtro_ruido_syp.tiempo(filtro_ruido_syp.nlm)
     tiempo_filtro_NLM2, ImagenFiltradaNLM2 = filtro_ruido_gauss.tiempo(filtro_ruido_gauss.nlm)
-    print('El tiempo de ejecución del filtro Gaussiano_lp con ruido s&p es', tiempo_filtro_gauss1)
+    print('El tiempo de ejecución del filtro Gaussiano_lp con ruido s&p es', tiempo_filtro_gauss1) #Se imprime cada tiempo medido
     print('El tiempo de ejecución del filtro Gaussiano_lp con ruido gaussiano es', tiempo_filtro_gauss2)
     print('El tiempo de ejecución del filtro Mediana con ruido s&p es', tiempo_filtro_MED1)
     print('El tiempo de ejecución del filtro Mediana con ruido gaussiano es', tiempo_filtro_MED2)
@@ -32,7 +32,7 @@ if __name__ == '__main__':
     print('El tiempo de ejecución del filtro Bilateral con ruido gaussiano es', tiempo_filtro_BILA2)
     print('El tiempo de ejecución del filtro Nlm con ruido s&p es', tiempo_filtro_NLM1)
     print('El tiempo de ejecución del filtro Nlm con ruido gaussiano es', tiempo_filtro_NLM2)
-    print('El sqrt(ECM) de la imagen con ruido s&p y filtrada con gaussiano_lp es',filtro_ruido_syp.R_ECM(image_grayf,ImagenFiltradaGauss1))
+    print('El sqrt(ECM) de la imagen con ruido s&p y filtrada con gaussiano_lp es',filtro_ruido_syp.R_ECM(image_grayf,ImagenFiltradaGauss1)) #Calculo e impresión del ECM
     print('El sqrt(ECM) de la imagen con ruido gaussiano y filtrada con gaussiano_lp es',filtro_ruido_gauss.R_ECM(image_grayf, ImagenFiltradaGauss2))
     print('El sqrt(ECM) de la imagen con ruido s&p y filtrada con Mediana es',filtro_ruido_syp.R_ECM(image_grayf, ImagenFiltradaMED1))
     print('El sqrt(ECM) de la imagen con ruido gaussiano y filtrada con Mediana es',filtro_ruido_gauss.R_ECM(image_grayf, ImagenFiltradaMED2))
@@ -40,7 +40,7 @@ if __name__ == '__main__':
     print('El sqrt(ECM) de la imagen con ruido gaussiano y filtrada con Bilateral es',filtro_ruido_gauss.R_ECM(image_grayf, ImagenFiltradaBILA2))
     print('El sqrt(ECM) de la imagen con ruido s&p y filtrada con Nlm es',filtro_ruido_syp.R_ECM(image_grayf, ImagenFiltradaNLM1))
     print('El sqrt(ECM) de la imagen con ruido gaussiano y filtrada con Nlm es',filtro_ruido_gauss.R_ECM(image_grayf, ImagenFiltradaNLM2))
-    EstimacionRuidoGauss1= filtro_ruido_syp.image_noise(image_gray_noisy,ImagenFiltradaGauss1)
+    EstimacionRuidoGauss1= filtro_ruido_syp.image_noise(image_gray_noisy,ImagenFiltradaGauss1) #Estimación de ruido para cada imagen
     EstimacionRuidoGauss2=filtro_ruido_gauss.image_noise(image_gray_noisyg,ImagenFiltradaGauss2)
     EstimacionRuidoMED1=filtro_ruido_syp.image_noise(image_gray_noisy,ImagenFiltradaMED1)
     EstimacionRuidoMED2=filtro_ruido_gauss.image_noise(image_gray_noisyg,ImagenFiltradaMED2)
@@ -48,7 +48,7 @@ if __name__ == '__main__':
     EstimacionRuidoBILA2=filtro_ruido_gauss.image_noise(image_gray_noisyg,ImagenFiltradaBILA2)
     EstimacionRuidoNLM1=filtro_ruido_syp.image_noise(image_gray_noisy,ImagenFiltradaNLM1)
     EstimacionRuidoNLM2=filtro_ruido_gauss.image_noise(image_gray_noisyg,ImagenFiltradaNLM2)
-    # cv2.imwrite(os.path.join(path, 'EstimacionRuidoGauss1.png'), EstimacionRuidoGauss1)
+    # cv2.imwrite(os.path.join(path, 'EstimacionRuidoGauss1.png'), EstimacionRuidoGauss1) #Guardando las imagenes
     # cv2.imwrite(os.path.join(path, 'EstimacionRuidoGauss2.png'), EstimacionRuidoGauss2)
     # cv2.imwrite(os.path.join(path, 'EstimacionRuidoMED1.png'), EstimacionRuidoMED1)
     # cv2.imwrite(os.path.join(path, 'EstimacionRuidoMED2.png'), EstimacionRuidoMED2)
@@ -67,7 +67,7 @@ if __name__ == '__main__':
     # cv2.imwrite(os.path.join(path, 'Imagen_Ruido_1_s&p.png'), image_gray_noisy)
     # cv2.imwrite(os.path.join(path, 'Imagen_Ruido_2_gauss.png'), image_gray_noisyg)
     # cv2.imwrite(os.path.join(path, 'EscaladeGrises.png'), image_grayf)
-    final_frame = cv2.hconcat((image_grayf ,image_grayf))  # or vconcat for vertical concatenation
+    final_frame = cv2.hconcat((image_grayf ,ImagenFiltradaGauss1))  # Imagen sin ruido/Imagen filtrada
     cv2.imshow("image.png", final_frame)
     cv2.waitKey(0)
 

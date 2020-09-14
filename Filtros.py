@@ -29,11 +29,11 @@ class Filtrado: # Se crea la clase imageShape
     def image_noise(self,image_noisy,image_filtered):
         image_noise = abs(image_noisy-image_filtered)
         return image_noise
-    def tiempo(self,funcion):
-        start = time()
+    def tiempo(self,funcion):  # Medición de ejecución para x función
+        start = time() #Valor inicial timer
         funcion_R= funcion()
-        end = time()
+        end = time() #Valor final del timer
         return ((end - start),funcion_R)
-    def R_ECM(self,im_gray,im_filtrada):
+    def R_ECM(self,im_gray,im_filtrada): # Raíz del ECM
         RECM=  np.sqrt((np.square(im_gray - im_filtrada)).mean())
         return(RECM)
